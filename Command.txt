@@ -1,0 +1,93 @@
+CMD:tryg3d(playerid){
+	new szLIST[2048], buffer[128], module_name[20];
+	
+	format(buffer,sizeof(buffer),"{00AAFF}Name\t{00AAFF}Value\n");
+	strcat(szLIST,buffer);
+	
+	format(buffer,sizeof(buffer),"3DTryg Version\t{00FF00}%d.%d.%d\n",Tryg3D::GetVersion(Tryg3D_Version));
+	strcat(szLIST,buffer);
+	
+	format(buffer,sizeof(buffer),"SA:MP Version\t{00FF00}%s\n",Tryg3D_SAMP_Version);
+	strcat(szLIST,buffer);
+	
+	strcat(szLIST,"\n\t\n");
+	strcat(szLIST,"Synchronization\t{00FF00}3D\n");
+	
+	format(buffer,sizeof(buffer),"Active Count\t{00FF00}%d\n",Tryg3D::GetActiveCount());
+	strcat(szLIST,buffer);
+	format(buffer,sizeof(buffer),"Active Time\t{00FF00}%d:%02d:%02d:%02d\n",Tryg3D::MSToTimeDay(Tryg3D::GetActiveTime()));
+	strcat(szLIST,buffer);
+	format(buffer,sizeof(buffer),"Errors\t{00FF00}%d\n",Tryg3D::GetErrorCount());
+	strcat(szLIST,buffer);
+	
+	strcat(szLIST,"\n\t\n");
+	#if defined Tryg3D_ColAndreas
+		if(Tryg3D::IsColAndreasInit()){
+			strcat(szLIST,"ColAndreas Data\t{00FF00}YES\n");
+		} else {
+			strcat(szLIST,"ColAndreas Data\t{FF0000}NO\n");
+		}
+	#else
+		strcat(szLIST,"ColAndreas Data\t{FF0000}NO\n");
+	#endif
+	
+	#if defined Tryg3D_MapAndreas
+		if(Tryg3D::IsMapAndreasInit()){
+			strcat(szLIST,"MapAndreas Data\t{00FF00}YES\n");
+		} else {
+			strcat(szLIST,"MapAndreas Data\t{FF0000}NO\n");
+		}
+	#else
+		strcat(szLIST,"MapAndreas Data\t{FF0000}NO\n");
+	#endif
+	
+	#if ((defined Tryg3D_MapAndreas) && (defined Tryg3D_FCNPC))
+		if(Tryg3D::IsMapAndreasInit()){
+			strcat(szLIST,"FCNPC MapAndreas\t{00FF00}YES\n");
+		} else {
+			strcat(szLIST,"FCNPC MapAndreas\t{FF0000}NO\n");
+		}
+	#else
+		strcat(szLIST,"FCNPC MapAndreas\t{FF0000}NO\n");
+	#endif
+	
+	if(IsVehicleCollisionEnabled()){
+		strcat(szLIST,"VehicleCollision Data\t{00FF00}YES\n");
+	} else {
+		strcat(szLIST,"VehicleCollision Data\t{FF0000}NO\n");
+	}
+	
+	strcat(szLIST,"\n\t\n");
+	for(new i = 0; i < _:(Tryg3D::Module); i++){
+		Tryg3D::GetModuleName(Tryg3D::Module:i,module_name);
+		if(Tryg3D::IsModuleLoaded(Tryg3D::Module:i)){
+			format(buffer,sizeof(buffer),"%s\t{00FF00}ON\n",module_name);
+			strcat(szLIST,buffer);
+		} else {
+			format(buffer,sizeof(buffer),"%s\t{FF0000}OFF\n",module_name);
+			strcat(szLIST,buffer);
+		}
+	}
+	
+	strcat(szLIST,"\n\t\n");
+	#if defined ENABLE_3D_TRYG_YSI_SUPPORT
+		strcat(szLIST,"YSI Module\t{00FF00}Detected\n");
+	#else
+		strcat(szLIST,"YSI Module\t{FF0000}NO\n");
+	#endif
+	
+	#if defined Tryg3D_i_quat
+		strcat(szLIST,"i_quat Module\t{00FF00}Detected\n");
+	#else
+		strcat(szLIST,"i_quat Module\t{FF0000}NO\n");
+	#endif
+	
+	strcat(szLIST,"\n\t\n");
+	format(buffer,sizeof(buffer),"ExtraID Start\t{00FF00}0x%08x\n",VCOLLISION_EXTRA_ID_OFFSET);
+	strcat(szLIST,buffer);
+	format(buffer,sizeof(buffer),"ExtraID End\t{00FF00}0x%08x\n",VCOLLISION_EXTRA_ID_OFFSET+MAX_VEHICLES);
+	strcat(szLIST,buffer);
+	
+	ShowPlayerDialog(playerid,0,DIALOG_STYLE_TABLIST_HEADERS,"{00AAFF}3DTryg Information",szLIST,"{FF0000}Exit","");
+	return 1;
+}

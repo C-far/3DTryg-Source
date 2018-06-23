@@ -1,0 +1,433 @@
+##################################################
+# Meta                                           #
+##################################################
+import meta\header.inc
+import meta\version.inc
+import meta\modules.inc
+import meta\symbols.inc
+import meta\variables.inc
+
+import samp\0.3.7.inc
+
+import core\mapandreas.inc
+
+rule VehicleCollision
+import core\VehicleCollision.inc
+endrule VehicleCollision
+##################################################
+# Functions                                      #
+##################################################
+import functions\Complementary\main.inc
+import functions\Complementary\RandomFloat.inc
+##################################################
+# Internal Functions                             #
+##################################################
+import functions\Internal\main.inc
+import functions\Internal\CompRotation.inc
+import functions\Internal\CompRotationFloat.inc
+import functions\Internal\DeCompRotation.inc
+import functions\Internal\DeCompRotationFloat.inc
+import functions\Internal\IsRotationTest.inc
+import functions\Internal\Tryg3D_IsPlayerSpawned.inc
+import functions\Internal\Tryg3D_GivePlayerDamage.inc
+##################################################
+# VehiclePartPosition Functions                  #
+##################################################
+import functions\VehiclePartPosition\main.inc
+import functions\VehiclePartPosition\Tryg3D_GetPartPos.inc
+import functions\VehiclePartPosition\GetVehiclePartPos.inc
+rule VehicleStreamer
+import functions\VehiclePartPosition\GetDynamicVehiclePartPos.inc
+endrule VehicleStreamer
+##################################################
+# Screen To World Functions                      #
+##################################################
+import functions\ScreenToWorld\main.inc
+import functions\ScreenToWorld\Tryg3D_NormCrossProduct.inc
+import functions\ScreenToWorld\ScreenToWorld.inc
+import functions\ScreenToWorld\WorldToScreen.inc
+
+rule ColAndreas
+import functions\ScreenToWorld\ScreenToWorldCol.inc
+endrule ColAndreas
+
+##################################################
+# Rotations Functions                            #
+##################################################
+import functions\Rotations\main.inc
+import functions\Rotations\Tryg3D_GetRotationMatrixEuler.inc
+import functions\Rotations\Tryg3D_MatrixRotate.inc
+import functions\Rotations\Tryg3D_GetQuatFromEuler.inc
+import functions\Rotations\Tryg3D_QuatRotate.inc
+import functions\Rotations\Tryg3D_EulerRotate.inc
+##################################################
+# General Functions                              #
+##################################################
+import functions\General\main.inc
+import functions\General\Tryg3D_EulerToQuat.inc
+import functions\General\Tryg3D_QuatToEuler.inc
+import functions\General\GetVehicleRotation.inc
+import functions\General\GetEllipseRadius.inc
+import functions\General\GetLineSize2D.inc
+import functions\General\GetLineSize3D.inc
+import functions\General\RecoilVector.inc
+import functions\General\SetPlayerLookAtPlayer.inc
+import functions\General\GetVehicleDefaultFlagsByModel.inc
+import functions\General\GetVehicleFlagsByModel.inc
+import functions\General\SetVehicleFlagsByModel.inc
+import functions\General\ToggleVehicleModelFlag.inc
+import functions\General\CountPlayers.inc
+import functions\General\CountVisiblePlayers.inc
+import functions\General\CountVisibleVehicles.inc
+import functions\General\GetRandomHit.inc
+import functions\General\GetPointInFront2D.inc
+import functions\General\GetRotationFor2Point3D.inc
+import functions\General\GetPointInFront3D.inc
+import functions\General\GetPointInFront3DEx.inc
+import functions\General\GetPointInFrontOfPlayer.inc
+import functions\General\GetPlayerCameraRotation.inc
+import functions\General\SetPlayerCameraRotation.inc
+import functions\General\GetPlayerCameraZAngle.inc
+import functions\General\SetPlayerCameraZAngle.inc
+import functions\General\GetPointInFrontOfCamera2D.inc
+import functions\General\GetMoveTime.inc
+import functions\General\GetVehicleSpeed.inc
+import functions\General\SetVehicleSpeed.inc
+import functions\General\GetPlayerSpeed.inc
+import functions\General\GetSpeedForMoveTime.inc
+import functions\General\ShiftVectorRotation.inc
+import functions\General\ShiftOffsetToPosition.inc
+import functions\General\ShiftPositionToOffset.inc
+import functions\General\GetQuatUpVector.inc
+import functions\General\GetArcPoints3D.inc
+import functions\General\GetPointToPointVector.inc
+import functions\General\GetPlayerTargetAngle.inc
+import functions\General\SetPlayerTargetAngle.inc
+import functions\General\GetPlayerTargetPlayerAngle.inc
+import functions\General\SetPlayerTargetPlayerAngle.inc
+import functions\General\CreateDynamicExplosion.inc
+import functions\General\CreateDynamicExplosionDMG.inc
+import functions\General\SendFakeDamageInRadius.inc
+import functions\General\GetWeaponShotPos.inc
+import functions\General\ShiftLineRotation.inc
+import functions\General\ShiftLineRotationVector.inc
+import functions\General\GetCube3DPoint.inc
+import functions\General\GetPointInFrontOfVehicle2D.inc
+import functions\General\GetPointInFrontOfVehicle3D.inc
+import functions\General\GetPointInFrontOfCamera3D.inc
+import functions\General\IsPlayerLookAtSky.inc
+import functions\General\GetPointFor2Point2D.inc
+import functions\General\GetPointFor2Point3D.inc
+import functions\General\GetPointFor2Point2DEx.inc
+import functions\General\GetPointFor2Point3DEx.inc
+import functions\General\GetDistanceFromPointToLine.inc
+import functions\General\IsPointBetween2Points2D.inc
+import functions\General\IsPointBetween2Points3D.inc
+import functions\General\IsPointNearly2Points2D.inc
+import functions\General\IsPointNearly2Points3D.inc
+import functions\General\IsPointInCylinder3D.inc
+import functions\General\IsPointInCube3D.inc
+import functions\General\IsPointInCone3D.inc
+import functions\General\IsPointInCircularSector.inc
+import functions\General\IsPointInSphericalSector.inc
+import functions\General\IsPointInSphericalSectorEx.inc
+import functions\General\IsPointInEllipse.inc
+import functions\General\IsPointInEllipticalCylinder2D.inc
+import functions\General\IsPointInPolygon.inc
+import functions\General\GetRandomPointInCircle.inc
+import functions\General\GetRandomPointInCylinder2D.inc
+import functions\General\GetRandomPointInCylinder3D.inc
+import functions\General\GetRandomPointInSphere.inc
+import functions\General\GetRandomPointInRectangle.inc
+import functions\General\GetRandomPointInCube.inc
+import functions\General\GetRandomPointInCube3D.inc
+import functions\General\GetRandomPointInCone3D.inc
+import functions\General\GetRandomPointInCircularSector.inc
+import functions\General\GetRandomPointInSphericalSector.inc
+import functions\General\GetRandomPointInEllipse.inc
+import functions\General\GetRandomPointInEllipticalCyl2D.inc
+import functions\General\GetRandomPointInPolygon.inc
+import functions\General\GetRandomPointOnClock.inc
+import functions\General\GetRandomPointOnCylinder2D.inc
+import functions\General\GetRandomPointOnCylinder3D.inc
+import functions\General\GetRandomPointOnSphere.inc
+import functions\General\GetRandomPointOnRectangle.inc
+import functions\General\GetRandomPointOnCube.inc
+import functions\General\GetRandomPointOnCube3D.inc
+import functions\General\GetRandomPointOnCone3D.inc
+import functions\General\GetRandomPointOnCircularSector.inc
+import functions\General\GetRandomPointOnSphericalSector.inc
+import functions\General\GetRandomPointOnEllipse.inc
+import functions\General\GetRandomPointOnEllipticalCyl2D.inc
+import functions\General\IsPlayerFakeSpectating.inc
+import functions\General\GenerateGangZone.inc
+import functions\General\GetCameraTargetDistance.inc
+import functions\General\IsPlayerAimingAt.inc
+import functions\General\IPL_CreateObject.inc
+##################################################
+# Universal Functions                            #
+##################################################
+import functions\Universal\main.inc
+import functions\Universal\Item_GetInvalidID.inc
+import functions\Universal\Item_GetPos.inc
+import functions\Universal\Item_GetVirtualWorld.inc
+import functions\Universal\Item_GetRotationQuat.inc
+import functions\Universal\Item_GetUpVector.inc
+import functions\Universal\Item_GetUpPos.inc
+import functions\Universal\Item_OnPlayerScreen.inc
+import functions\Universal\Item_OnFakeScreen.inc
+import functions\Universal\Item_GetDistance.inc
+import functions\Universal\Item_GetDistanceFromPoint.inc
+import functions\Universal\Item_InCircle.inc
+import functions\Universal\Item_InCylinder3D.inc
+import functions\Universal\Item_InCylinder2D.inc
+import functions\Universal\Item_InSphere.inc
+import functions\Universal\Item_InRectangle.inc
+import functions\Universal\Item_InCube.inc
+import functions\Universal\Item_InPolygon.inc
+import functions\Universal\Item_InCircularSector.inc
+import functions\Universal\Item_InSphericalSector.inc
+import functions\Universal\Item_InCone.inc
+import functions\Universal\Item_InCube3D.inc
+import functions\Universal\Item_InEllipse.inc
+import functions\Universal\Item_InEllipticalCylinder2D.inc
+import functions\Universal\Item_GetToPointVector.inc
+import functions\Universal\Item_GetRotatedVector.inc
+import functions\Universal\Item_GetOrientationPos.inc
+##################################################
+# VehicleCollision Functions                     #
+##################################################
+rule VehicleCollision
+import functions\VehicleCollision\main.inc
+import functions\VehicleCollision\Tryg3D_SyncVehicleCollision.inc
+import functions\VehicleCollision\Tryg3D_InitVehicleCollision.inc
+import functions\VehicleCollision\Tryg3D_ExitVehicleCollision.inc
+import functions\VehicleCollision\MovePointColWithVehicle.inc
+import functions\VehicleCollision\MovePointColWithVehicleCut.inc
+import functions\VehicleCollision\Item_ToPointIsVeh.inc
+import functions\VehicleCollision\Item_ToItemIsVeh.inc
+endrule VehicleCollision
+##################################################
+# Animation Functions
+##################################################
+rule Animation
+import functions\Animation\main.inc
+import functions\Animation\IsPlayerSkydiving.inc
+import functions\Animation\IsPlayerUsingParachute.inc
+import functions\Animation\IsPlayerAiming.inc
+import functions\Animation\IsPlayerStay.inc
+import functions\Animation\IsPlayerRunning.inc
+import functions\Animation\IsPlayerSwim.inc
+import functions\Animation\IsPlayerJump.inc
+import functions\Animation\IsPlayerParaFall.inc
+import functions\Animation\IsPlayerParaGlide.inc
+import functions\Animation\IsPlayerFall.inc
+endrule Animation
+##################################################
+# Extended Functions
+##################################################
+import functions\Extended\main.inc
+import functions\Extended\Tryg3D_IsModuleLoaded.inc
+import functions\Extended\Tryg3D_GetModuleName.inc
+import functions\Extended\Tryg3D_GetModules.inc
+##################################################
+# ATM Functions
+##################################################
+rule ATM
+import functions\ATM\main.inc
+import functions\ATM\Tryg3D_GetSAMIncludeVersion.inc
+endrule ATM
+##################################################
+# Actor Functions
+##################################################
+rule Actor
+import functions\Actor\main.inc
+import functions\Actor\CountActors.inc
+import functions\Actor\CountVisibleActors.inc
+endrule Actor
+##################################################
+# Stream3D Functions
+##################################################
+rule Stream3D
+import functions\Stream3D\main.inc
+import functions\Stream3D\IsValidStream.inc
+import functions\Stream3D\StreamCircle.inc
+import functions\Stream3D\StreamCylinder3D.inc
+import functions\Stream3D\StreamCone3D.inc
+import functions\Stream3D\StreamCube3D.inc
+import functions\Stream3D\StreamCylinder2D.inc
+import functions\Stream3D\StreamSphere.inc
+import functions\Stream3D\StreamRectangle.inc
+import functions\Stream3D\StreamCube.inc
+import functions\Stream3D\StreamCircularSector.inc
+import functions\Stream3D\StreamSphericalSector.inc
+import functions\Stream3D\StreamEllipse.inc
+import functions\Stream3D\StreamEllipticalCylinder2D.inc
+import functions\Stream3D\IsPointInStream.inc
+import functions\Stream3D\GetRandomPointInStream.inc
+import functions\Stream3D\GetRandomPointOnStream.inc
+import functions\Stream3D\Item_InStream.inc
+import functions\Stream3D\IsVehicleFullyInStream.inc
+import functions\Stream3D\Item_GetInStream.inc
+rule Streamer
+import functions\Stream3D\ConvertAreaToStream.inc
+endrule Streamer
+
+endrule Stream3D
+##################################################
+# Streamer Functions                             #
+##################################################
+rule Streamer
+import functions\Streamer\main.inc
+import functions\Streamer\SetPlayerAbsolutePosition.inc
+import functions\Streamer\SetPlayerAbsolutePositionVeh.inc
+import functions\Streamer\IsVehicleFullyInDynamicArea.inc
+import functions\Streamer\GetRandomPointInDynamicArea.inc
+import functions\Streamer\IPL_CreateDynamicObject.inc
+import functions\Streamer\Item_InDynamicArea.inc
+import functions\Streamer\Item_GetInDynamicArea.inc
+endrule Streamer
+##################################################
+# ColAndreas Functions                           #
+##################################################
+rule ColAndreas
+import functions\ColAndreas\main.inc
+import functions\ColAndreas\CA_FindGroundZ.inc
+import functions\ColAndreas\MovePointCol.inc
+import functions\ColAndreas\MovePointColCutLine.inc
+import functions\ColAndreas\MovePointColCutLineEx.inc
+import functions\ColAndreas\GetPointInFront3DCol.inc
+import functions\ColAndreas\GetPointInFront3DColEx.inc
+import functions\ColAndreas\GetPointInFrontOfPlayerCol.inc
+import functions\ColAndreas\GetPointInFrontOfCamera2DCol.inc
+import functions\ColAndreas\GetPointInFrontOfCamera3DCol.inc
+import functions\ColAndreas\GetPointInFrontOfVehicle2DCol.inc
+import functions\ColAndreas\GetPointInFrontOfVehicle3DCol.inc
+import functions\ColAndreas\UndergroundFindZ.inc
+import functions\ColAndreas\InteriorFindZ.inc
+import functions\ColAndreas\IsPointInWater.inc
+import functions\ColAndreas\IsPointInUnderground.inc
+import functions\ColAndreas\IsPointInAir.inc
+import functions\ColAndreas\IsPointInGround.inc
+import functions\ColAndreas\GetPointCollisionFlags.inc
+import functions\ColAndreas\IsBetweenPlayersIsWall.inc
+import functions\ColAndreas\IsBetweenPlayerToPointIsWall.inc
+import functions\ColAndreas\GetPointInWallForPoint.inc
+import functions\ColAndreas\Item_IsPlayerInRange.inc
+import functions\ColAndreas\Item_InRangeOfPoint.inc
+import functions\ColAndreas\Item_InRangeOfItem.inc
+import functions\ColAndreas\Item_ToItemIsWall.inc
+import functions\ColAndreas\Item_ToPointIsWall.inc
+import functions\ColAndreas\Item_GetCollisionFlags.inc
+import functions\ColAndreas\Item_GetOrientationPosCol.inc
+import functions\ColAndreas\GetWallRotation.inc
+endrule ColAndreas
+##################################################
+# MapAndreas Functions #
+##################################################
+rule MapAndreas
+import functions\MapAndreas\main.inc
+import functions\MapAndreas\GetPointInFrontOnGround.inc
+import functions\MapAndreas\IsPointInWater.inc
+endrule MapAndreas
+##################################################
+# ColAndreas/MapAndreas Functions                #
+##################################################
+rule ___Andreas
+import functions\___Andreas\main.inc
+import functions\___Andreas\GetGroundRotation.inc
+import functions\___Andreas\Item_IsPointInWaterOrient.inc
+import functions\___Andreas\IsPointInWaterFrontOfPlayer.inc
+endrule ___Andreas
+##################################################
+# YSF Functions                                  #
+##################################################
+rule YSF
+import functions\YSF\main.inc
+import functions\YSF\CountTextDraw.inc
+import functions\YSF\CountVisibleTextDraw.inc
+import functions\YSF\CountPlayerTextDraw.inc
+import functions\YSF\CountVisiblePlayerTextDraw.inc
+import functions\YSF\CountGangZone.inc
+import functions\YSF\CountVisibleGangZone.inc
+import functions\YSF\CountPlayerGangZone.inc
+import functions\YSF\CountVisiblePlayerGangZone.inc
+import functions\YSF\IsVehicleOnSpawn.inc
+import functions\YSF\IsPlayerOnSpawn.inc
+import functions\YSF\GetPlayerRotation.inc
+import functions\YSF\GetRandomPointInGangZone.inc
+import functions\YSF\GetRandomPointInPlayerGangZone.inc
+endrule YSF
+##################################################
+# FCNPC Functions                                #
+##################################################
+rule FCNPC
+import functions\FCNPC\main.inc
+import functions\FCNPC\FCNPC_GetPointInFront.inc
+import functions\FCNPC\FCNPC_GetTargetAngle.inc
+import functions\FCNPC\FCNPC_SetTargetAngle.inc
+import functions\FCNPC\FCNPC_SetVehicleRotation.inc
+import functions\FCNPC\FCNPC_SetVehicleTargetRotation.inc
+import functions\FCNPC\FCNPC_GoToAir.inc
+
+rule ColAndreas
+import functions\FCNPC\FCNPC_GetPointInFrontCol.inc
+import functions\FCNPC\FCNPC_GoToCol.inc
+import functions\FCNPC\FCNPC_GoToPlayerCol.inc
+import functions\FCNPC\FCNPC_GoToPlayerOnGroundCol.inc
+import functions\FCNPC\FCNPC_GoToAirCol.inc
+import functions\FCNPC\FCNPC_SetFloorPos.inc
+
+rule VehicleCollision
+import functions\FCNPC\FCNPC_GoToPlayerOnGroundColVeh.inc
+endrule VehicleCollision
+
+rule Streamer
+import functions\FCNPC\FCNPC_RandomMoveInDynamicArea.inc
+endrule Streamer
+
+rule Stream3D
+import functions\FCNPC\FCNPC_RandomMoveInStream.inc
+endrule Stream3D
+
+endrule ColAndreas
+
+rule Streamer
+import functions\FCNPC\FCNPC_SetAbsolutePosition.inc
+endrule Streamer
+
+endrule FCNPC
+##################################################
+# VehicleStreamer Functions
+##################################################
+rule VehicleStreamer
+import functions\VehicleStreamer\main.inc
+import functions\VehicleStreamer\GetDynamicVehicleRotation.inc
+import functions\VehicleStreamer\GetPointInFrontOfDynVeh2D.inc
+import functions\VehicleStreamer\GetPointInFrontOfDynVeh3D.inc
+import functions\VehicleStreamer\GetDynamicVehicleSpeed.inc
+
+rule ColAndreas
+import functions\VehicleStreamer\GetPointInFrontOfDynVeh2DCol.inc
+import functions\VehicleStreamer\GetPointInFrontOfDynVeh3DCol.inc
+endrule ColAndreas
+
+rule YSF
+import functions\VehicleStreamer\IsDynamicVehicleOnSpawn.inc
+endrule YSF
+
+rule Streamer
+import functions\VehicleStreamer\IsDynVehFullyInDynamicArea.inc
+endrule Streamer
+
+rule Stream3D
+import functions\VehicleStreamer\IsDynamicVehicleFullyInStream.inc
+endrule Stream3D
+
+endrule VehicleStreamer
+##################################################
+# Core                                           #
+##################################################
+import core\extranames.inc
+#import core\old_syntax_universal.inc
+import core\init.inc
