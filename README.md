@@ -1,2 +1,2 @@
-# 3DTryg-Source
-SA:MP 3DTryg Source Code
+This repository contains an unauthorized copy of deprecated code
+https://github.com/AbyssMorgan/SAMP
